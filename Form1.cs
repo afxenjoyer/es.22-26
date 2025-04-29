@@ -12,8 +12,8 @@ namespace es._22_26
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            string[] numeri = {"3", "00", "10", "12", "21", "22", "100", "200", "121", "333", 
-                "321", "1000", "2000", "1234", "2234", "10000", "12234", "100000", "150000", "101234",  "1000123", "1001234"};
+            string[] numeri = {"3", "00", "10", "12", "20", "21", "22", "50", "100", "150", "200", "121", "333",
+                "321", "1000", "2000", "1234", "2234", "10000", "12234", "100000", "150000", "101234",  "1000123", "1001234", "1500000"};
 
             foreach (string numero in numeri)
             {
@@ -140,7 +140,9 @@ namespace es._22_26
                 case '2':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4':
+                        case '0':
+                            return "Venti";
+                        case '2': case '3': case '4':
                         case '5': case '6': case '7': case '9':
                             return "Venti" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -150,7 +152,9 @@ namespace es._22_26
                 case '3':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4': 
+                        case '0':
+                            return "Trenta";
+                        case '2': case '3': case '4': 
                         case '5': case '6': case '7': case '9':
                             return "Trenta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -160,7 +164,9 @@ namespace es._22_26
                 case '4':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4':
+                        case '0':
+                            return "Quaranta";
+                        case '2': case '3': case '4':
                         case '5': case '6': case '7': case '9':
                             return "Quaranta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -170,7 +176,9 @@ namespace es._22_26
                 case '5':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4':
+                        case '0':
+                            return "Cinquanta";
+                        case '2': case '3': case '4':
                         case '5': case '6': case '7': case '9':
                             return "Cinquanta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -180,7 +188,9 @@ namespace es._22_26
                 case '6':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4': 
+                        case '0':
+                            return "Sessanta";
+                        case '2': case '3': case '4': 
                         case '5': case '6': case '7': case '9':
                             return "Sessanta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -190,7 +200,9 @@ namespace es._22_26
                 case '7':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4':
+                        case '0':
+                            return "Settanta";
+                        case '2': case '3': case '4':
                         case '5': case '6': case '7': case '9':
                             return "Settanta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -200,7 +212,9 @@ namespace es._22_26
                 case '8':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4':
+                        case '0':
+                            return "Ottanta";
+                        case '2': case '3': case '4':
                         case '5': case '6': case '7': case '9':
                             return "Ottanta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -210,7 +224,9 @@ namespace es._22_26
                 case '9':
                     switch (num[1])
                     {
-                        case '0': case '2': case '3': case '4':
+                        case '0':
+                            return "Novanta";
+                        case '2': case '3': case '4':
                         case '5': case '6': case '7': case '9':
                             return "Novanta" + ConvertiNumeroSingolaCifra(num[1]).ToLower();
                         case '1': case '8':
@@ -264,7 +280,11 @@ namespace es._22_26
         {
             char[] ultimeTreCifre = new char[3];
             Array.Copy(num, 1, ultimeTreCifre, 0, 3);
-            if (num[1] == '0' && num[2] == '0' && num[3] == '0')
+            if (num[0] == '1' && num[1] == '0' && num[2] == '0' && num[3] == '0')
+            {
+                return "Mille";
+            }
+            else if (num[1] == '0' && num[2] == '0' && num[3] == '0')
             {
                 return ConvertiNumeroSingolaCifra(num[0]) + "mila";
             }
