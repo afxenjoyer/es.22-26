@@ -79,14 +79,14 @@
             lstConversioni.ItemHeight = 15;
             lstConversioni.Location = new Point(149, 33);
             lstConversioni.Name = "lstConversioni";
-            lstConversioni.Size = new Size(256, 259);
+            lstConversioni.Size = new Size(379, 259);
             lstConversioni.TabIndex = 4;
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(418, 303);
+            ClientSize = new Size(540, 303);
             Controls.Add(lstConversioni);
             Controls.Add(btnReset);
             Controls.Add(btnConverti);

@@ -13,7 +13,7 @@ namespace es._22_26
         private void frmMain_Load(object sender, EventArgs e)
         {
             string[] numeri = {"3", "00", "10", "12", "20", "21", "22", "50", "100", "150", "200", "121", "333",
-                "321", "1000", "2000", "1234", "2234", "10000", "12234", "100000", "150000", "101234",  "1000123", "1001234", "1500000"};
+                "321", "1000", "2000", "1234", "2234", "10000", "12234", "100000", "150000", "101234",  "1000123", "1000234", "2000000"};
 
             foreach (string numero in numeri)
             {
@@ -90,6 +90,9 @@ namespace es._22_26
                         break;
                     case 6:
                         risultato = ConvertiNumeroSeiCifre(numDaConvertire);
+                        break;
+                    case 7:
+                        risultato = ConvertiNumeroSetteCifre(numDaConvertire);
                         break;
                 }
                 return risultato;
@@ -333,6 +336,53 @@ namespace es._22_26
             string risultato = ConvertiNumeroTreCifre(primeTreCifre) + "mila"
                            + ConvertiNumeroTreCifre(ultimeTreCifre).ToLower();
             return risultato;
+        }
+
+        string ConvertiNumeroSetteCifre(char[] num)
+        {
+            char[] mezzoTreCifre = new char[3];
+            Array.Copy(num, 1, mezzoTreCifre, 0, 3);
+
+            char[] ultimeSeiCifre = new char[6];
+            Array.Copy(num, 1, ultimeSeiCifre, 0, 6);
+
+            char[] ultimeTreCifre = new char[3];
+            Array.Copy(num, 3, ultimeTreCifre, 0, 3);
+
+            switch (num[0]) 
+            {
+                case '1':
+                    if (num[1] == '0' && num[2] == '0' && num[3] == '0' && num[4] == '0' && num[5] == '0' &&
+                        num[6] == '0')
+                    {
+                        return "Unmilione";
+                    }
+                    else if (mezzoTreCifre[0] == 0 && mezzoTreCifre[1] == 0 && mezzoTreCifre[2] == 0)
+                    {
+                        return "Unmilione" + ConvertiNumeroTreCifre(ultimeTreCifre).ToLower();
+                    }
+                    else
+                    {
+                        return "Unmilione" + ConvertiNumeroSeiCifre(ultimeSeiCifre).ToLower();
+                    }
+                case '2': case '3': case '4': case '5':
+                case '6': case '7': case '8': case '9':
+                    if (num[1] == '0' && num[2] == '0' && num[3] == '0' && num[4] == '0' && num[5] == '0' &&
+                        num[6] == '0')
+                    {
+                        return ConvertiNumeroSingolaCifra(num[0]) + "milioni";
+                    }
+                    else if (mezzoTreCifre[0] == 0 && mezzoTreCifre[1] == 0 && mezzoTreCifre[2] == 0)
+                    {
+                        return ConvertiNumeroSingolaCifra(num[0]) + "milioni" + ConvertiNumeroTreCifre(ultimeTreCifre).ToLower();
+                    }
+                    else
+                    {
+                        return ConvertiNumeroSingolaCifra(num[0]) + "milioni" + ConvertiNumeroSeiCifre(ultimeSeiCifre).ToLower();
+                    }
+                default:
+                    return "ERRORE";
+            }
         }
     }
 }
